@@ -6,6 +6,7 @@ import students.Student;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class Main {
     public static void main(String[] args) {
         MyArrayList<Student> students = new MyArrayList<>();
@@ -13,6 +14,7 @@ public class Main {
         students.add(new Student("Sidorov"));
         students.add(new Student("Petrov"));
         System.out.println(students);
+
 
         ArrayList<Student> students2 = new ArrayList<>();
         students2.add(new Student("Kukushkin"));

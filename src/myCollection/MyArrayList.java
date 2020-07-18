@@ -19,6 +19,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object object) {
+        if (object == null)
+            throw new NullPointerException();
         for (Object o : array) {
             if (o.equals(object))
                 return true;
@@ -33,7 +35,7 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return createCopy(array);
     }
 
     @Override
@@ -49,6 +51,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean add(E e) {
+        if (e == null)
+            throw new NullPointerException();
         Object[] newArray = new Object[array.length + 1];
         for (int i = 0; i < array.length; i++) {
             newArray[i] = array[i];
@@ -60,6 +64,8 @@ public class MyArrayList<E> implements Collection<E> {
     }
 
     private Object[] createCopy(Object[] array) {
+        if (array == null)
+            throw new NullPointerException();
         Object[] result = new Object[array.length];
         for (int i = 0; i < array.length; i++) {
             result[i] = array[i];
@@ -89,6 +95,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
+        if (collection == null)
+            throw new NullPointerException();
         int count = 0;
         for (int i = 0; i < collection.size(); i++) {
             if (contains(collection.toArray()[i]))
@@ -101,6 +109,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> collection) {
+        if (collection == null)
+            throw new NullPointerException();
         for (E e : collection) {
             add(e);
         }
@@ -109,6 +119,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean removeAll(Collection<?> collection) {
+        if (collection == null)
+            throw new NullPointerException();
         int count = 0;
         MyArrayList result = new MyArrayList();
         result.array = createCopy(array);
@@ -126,6 +138,8 @@ public class MyArrayList<E> implements Collection<E> {
 
     @Override
     public boolean retainAll(Collection<?> collection) {
+        if (collection == null)
+            throw new NullPointerException();
         MyArrayList result = new MyArrayList();
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < collection.size(); j++) {
@@ -143,9 +157,6 @@ public class MyArrayList<E> implements Collection<E> {
 
     }
 
-    public Object get(int index) {
-        return array[index];
-    }
 
     @Override
     public String toString() {
